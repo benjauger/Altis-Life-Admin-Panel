@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+
+<div class="page-header">
+    <h3 class="uppercase">Search results for {% if query is empty %}<b><i>null</i></b>{% else %}<b><i>{{ query|escape }}</i></b>{% endif %}</h3>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading bold">There is something like {{ datas|length }} result{% if datas|length > 1 %}s{% endif %}</div>
+    <table class="table">
+        <ul class="list-group" id="datas">
+            {% for item in datas %}
+            <a href="/player/{{ item.playerid }}" class="list-group-item">
+                {{ item.name }}
+                {% if item.donatorlvl > 0 %}
+                <span class="badge badge-nr badge-gi badge-donor" data-toggle="tooltip" data-placement="top" title="Member donor"><span class="glyphicon glyphicon-heart"></span></span>
+                {% else %}
+                <span class="badge badge-nr badge-gi"><span class="glyphicon glyphicon-heart"></span></span>
+                {% endif %}
+                {% if item.adminlevel > 0 %}
+                <span class="badge badge-nr badge-admin">Admin</span>
+                {% else %}
+                <span class="badge badge-nr badge-player">Player</span>
+                {% endif %}
+                {% if item.coplevel > 0 %}
+                <span class="badge badge-nr badge-police" data-toggle="tooltip" data-placement="top" title="{{ at_cop[item.coplevel] }}">Police</span>
+                {% else %}
+                <span class="badge badge-nr badge-citizen">Citizen</span>
+                {% endif %}
+                <span class="badge badge-nr" data-toggle="tooltip" data-placement="top"
+                      title="Cash : {{ item.cash|number_format(0, ',', ' ') }} $<br>Bank : {{ item.bankacc|number_format(0, ',', ' ') }} $">{{ (item.cash+item.bankacc)|number_format(0, ',', ' ') }} $</span>
+            </a>
+            {% endfor %}
+        </ul>
+    </table>
+</div>
+
+{% include 'footer.html' %}

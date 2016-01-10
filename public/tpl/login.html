@@ -1,0 +1,23 @@
+{% include 'header.html' %}
+
+<div class="container">
+    <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
+        <p id="profile-name" class="profile-name-card"></p>
+        {% if login_error == true %}
+        <div class="alert alert-danger text-center" role="alert"><b>Wrong</b> username or password</div>
+        {% else %}
+        <div class="alert alert-info text-center" role="info">Login as guest with <b>user</b> / <b>userpass</b></div>
+        {% endif %}
+        <p></p>
+        <form class="form-signin" method="post">
+            <input name="username" id="username" class="form-control form-login" placeholder="Username" required
+                   autofocus>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+            <button class="pointer btn btn-lg btn-primary btn-block btn-signin" type="submit">LOGIN <span
+                    class="glyphicon glyphicon-log-in"></span></button>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}

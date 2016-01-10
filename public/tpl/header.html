@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <title>{{ head_title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow"/>
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-3.3.6/css/bootstrap.min.css">
+    {% if (current_url == "/login" or is_logged == false) %}
+    <link rel="stylesheet" type="text/css" href="/assets/css/login.min.css">
+    {% endif %}
+    <script src="/assets/vendors/jquery/jquery-1.11.3.min.js"></script>
+    <script src="/assets/vendors/jquery/jquery-ui.min.js"></script>
+    <script src="/assets/vendors/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Vendors -->
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-select-1.9.3/dist/css/bootstrap-select.css">
+    <script src="/assets/vendors/bootstrap-select-1.9.3/dist/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="/assets/vendors/font-awesome/font-awesome.min.css">
+</head>
+
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                {% if is_logged == true %}
+                <a class="navbar-brand" href="/"> Home</a>
+                {% else %}
+                <a class="navbar-brand" href="/"> Altis Life Admin Panel</a>
+                {% endif %}
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <!-- If is logged -->
+                {% if is_logged == true %}
+                <ul class="nav navbar-nav">
+                    {% if logged_role == 3 %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Panel <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Actions log</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Add an user</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-th-list"></span> Show users</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-euro"></span> Most rich</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Last players</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-fire"></span> Server informations</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="disabled"><a href="#" disabled><span class="glyphicon glyphicon-time"></span> Death logs</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More features <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span> Policemen list</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-certificate"></span> Admin list</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Donor list</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search" method="post" action="/search">
+                    <div class="input-group">
+                        <input type="text" name="searchquery" class="form-control" placeholder="Search by name or id ..." required>
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default" type="button">&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;</button>
+                        </span>
+                    </div>
+                </form>
+                {% endif %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://www.altisliferpg.com/" target="_blank" title="AltisLife RPG official website"><img src="/assets/images/altis.png"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+<div class="container">

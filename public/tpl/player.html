@@ -1,0 +1,152 @@
+{% include 'header.html' %}
+
+<div class="page-header">
+    <h3 class="uppercase">Edit profile of <span class="bold">{{ p_name }}</span> (#{{ p_uid }})</h3>
+</div>
+
+<!-- Aliases -->
+<div class="alert alert-warning">
+    <h3 class="topless">Aliases ​​previously used <span class="glyphicon glyphicon-info-sign right"></span></h3>
+    <em>{{ p_aliases }}</em>
+</div>
+
+{% for item in datas %}
+<!-- Left side -->
+<div class="col-lg-6 nomargin-left left">
+    <!-- Left side of left side -->
+    <div class="col-lg-6 nomargin-left left">
+        <div class="form-group">
+            <label for="p_id">Payer ID :</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input disabled type="text" id="p_id" class="form-control disabled" value="{{ item.playerid }}">
+            </div>
+        </div>
+        <!-- Bank account -->
+        <div class="form-group">
+            <label for="p_bankacc">Bank account :</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                <input type="text" id="p_bankacc" class="form-control" value="{{ item.bankacc }}">
+            </div>
+        </div>
+        <!-- Grade level -->
+        <div class="form-group">
+            <label for="p_gradelvl">Grade level :</label>
+            <select id="p_gradelvl" class="selectpicker form-control col-lg-12 nomargin">
+                <option {% if (item.coplevel == 0) %}selected{% endif %} value="0">{{ at_cop[0] }}</option>
+                <option {% if (item.coplevel == 1) %}selected{% endif %} value="1">{{ at_cop[1] }}</option>
+                <option {% if (item.coplevel == 2) %}selected{% endif %} value="2">{{ at_cop[2] }}</option>
+                <option {% if (item.coplevel == 3) %}selected{% endif %} value="3">{{ at_cop[3] }}</option>
+                <option {% if (item.coplevel == 4) %}selected{% endif %} value="4">{{ at_cop[4] }}</option>
+                <option {% if (item.coplevel == 5) %}selected{% endif %} value="5">{{ at_cop[5] }}</option>
+                <option {% if (item.coplevel == 6) %}selected{% endif %} value="6">{{ at_cop[6] }}</option>
+                <option {% if (item.coplevel == 7) %}selected{% endif %} value="7">{{ at_cop[7] }}</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Right side of left side -->
+    <div class="col-lg-6 left">
+        <!-- Cash money -->
+        <div class="form-group">
+            <label for="p_cash">Cash money :</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
+                <input type="text" id="p_cash" class="form-control" value="{{ item.cash }}">
+            </div>
+        </div>
+        <!-- Admin level -->
+        <div class="form-group">
+            <label for="p_adminlvl">Admin level :</label>
+            <select id="p_adminlvl" class="selectpicker form-control col-lg-12 nomargin">
+                <option {% if (item.adminlevel == 0) %}selected{% endif %} value="0">Player</option>
+                <option {% if (item.adminlevel == 1) %}selected{% endif %} value="1">Helper</option>
+                <option {% if (item.adminlevel == 2) %}selected{% endif %} value="2">Moderator</option>
+                <option {% if (item.adminlevel == 3) %}selected{% endif %} value="3">Admin</option>
+            </select>
+        </div>
+        <!-- Donor -->
+        <div class="form-group">
+            <label for="p_donor_s" class="block">Donor status :</label>
+            <div class="col-lg-5 nomargin-left">
+                <select id="p_donor_s" class="selectpicker form-control col-lg-12 nomargin">
+                    <option {% if (item.donatorlvl == 0) %}selected{% endif %} value="0">No</option>
+                    <option {% if (item.donatorlvl == 5) %}selected{% endif %} value="5">Yes</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-7 nomargin-right">
+                <select id="p_donor_c" class="selectpicker form-control col-lg-12 nomargin">
+                    <option {% if (item.duredon == 0) %}selected{% endif %} value="0">No donor</option>
+                    <option {% if (item.duredon == 1) %}selected{% endif %} value="1">1 month</option>
+                    <option {% if (item.duredon == 2) %}selected{% endif %} value="2">2 month</option>
+                    <option {% if (item.duredon == 3) %}selected{% endif %} value="3">3 month</option>
+                    <option {% if (item.duredon == 4) %}selected{% endif %} value="4">4 month</option>
+                    <option {% if (item.duredon == 5) %}selected{% endif %} value="5">5 month</option>
+                    <option {% if (item.duredon == 6) %}selected{% endif %} value="6">6 month</option>
+                    <option {% if (item.duredon == 12) %}selected{% endif %} value="12">12 month</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Garage -->
+    <div class="col-lg-12 nomargin-left">
+        <label for="p_garage" class="block">Grarage :</label>
+        <div class="panel panel-default" id="p_garage">
+            <div class="panel-heading">Vehicles for <span class="bold">{{ p_name }}</span></div>
+            <ul class="list-group">
+            {% if p_vehicles is null %}
+                <li class="list-group-item">
+                    There is no vehicles inside this garage
+                </li>
+            {% else %}
+                {% for veh in p_vehicles %}
+                <li class="list-group-item">
+                    <a href="https://community.bistudio.com/wiki/File:Arma3_CfgVehicles_{{ veh.classname }}.jpg" target="_blank">{{ veh.classname }}</a>
+                    <span onclick="alert('id - {{ veh.id }}')" class="badge badge-nr badge-pp badge-delete pointer" data-toggle="tooltip" data-placement="top" title="Delete vehicule #{{ veh.id }}"><span class="glyphicon glyphicon-trash"></span></span>
+                    <span onclick="alert('id - {{ veh.id }}')" class="badge badge-nr badge-pp badge-destroy pointer">Destroy</span>
+                    {% if veh.assur == 1 %}
+                    <span onclick="alert('id - {{ veh.id }}')" class="badge badge-nr badge-pp badge-insure pointer">Insure</span>
+                    {% else %}
+                    <span onclick="alert('id - {{ veh.id }}')" class="badge badge-nr badge-pp badge-ensure pointer">Ensure</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Right side -->
+<div class="col-lg-6 nomargin-right right">
+    <!-- Licences -->
+    <label for="p_licenses" class="block">Civil licenses state :</label>
+    {% for lic in p_licenses %}
+        {% if lic.name is empty %}
+        <div class="alert alert-danger">
+            <h3 class="topless">Player doesn't have any licenses ! <span class="glyphicon glyphicon-question-sign right"></span></h3>
+            <em>Tell him to try to reconnect to the game and refresh this page ...</em>
+        </div>
+        {% else %}
+        <div class="form-group col-lg-6 {% if loop.index is divisibleby(2) %}nomargin-right{% else %}nomargin-left{% endif %}" id="p_licenses">
+            <div class="input-group">
+                    <input disabled type="text" id="{{ loop.index }}" class="disabled form-control" placeholder="{{ lic.name }}">
+                    {% if lic.status == 0 %}
+                    <span class="input-group-btn">
+                        <button id="{{ loop.index0 }}_{{ p_id }}" onclick="updateCivlicenses('0','{{ p_id }}','{{ loop.index0 }}')" data-loading-text="Loading..." class="btn btn-default" style="width:90px;" type="button">Add</button>
+                    </span>
+                    {% else %}
+                    <span class="input-group-btn">
+                        <button id="{{ loop.index0 }}_{{ p_id }}" onclick="updateCivlicenses('1','{{ p_id }}','{{ loop.index0 }}')" data-loading-text="Loading..." class="btn btn-danger" style="width:90px;" type="button">Remove</button>
+                    </span>
+                    {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endfor %}
+
+{% include 'footer.html' %}

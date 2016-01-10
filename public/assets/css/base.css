@@ -1,0 +1,125 @@
+* {
+    outline: none !important
+}
+
+button .btn {
+    outline: none !important
+}
+
+.block{
+    display: block !important;
+}
+
+.pointer {
+    cursor: pointer !important
+}
+
+.uppercase{
+    text-transform: uppercase !important;
+}
+
+.bold{
+    font-weight: bold !important;
+}
+
+.nomargin{
+    margin-left:0 !important;
+    padding-left: 0!important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    left:0 !important;
+    right: 0 !important;
+}
+
+.right{
+    float:right !important;
+}
+
+.left{
+    float:left !important;
+}
+
+.nomargin-left{
+    margin-left:0 !important;
+    padding-left: 0!important;
+    left:0 !important;
+}
+
+.nomargin-right{
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    right: 0 !important;
+}
+
+.topless{
+    margin-top:0px !important;
+}
+
+.badge{
+    background-color: #9b9b9b !important;
+    margin: 0 5px 0 0 !important;
+}
+
+.badge-nr{
+    -webkit-border-radius: 2px !important;
+    -moz-border-radius: 2px !important;
+    border-radius: 2px !important;
+}
+
+.badge-police{
+    width:75px;
+    background-color: #2a4f79 !important;
+}
+
+.badge-citizen{
+    width:75px;
+    background-color: #9b9b9b !important;
+}
+
+.badge-player{
+    width: 70px;
+    background-color: #9b9b9b !important;
+}
+
+.badge-admin{
+    width: 70px;
+    background-color: #79262c !important;
+}
+
+.badge-donor{
+    background-color: #cf3c46 !important;
+}
+
+.badge-pp{
+    padding: 5px !important;
+}
+
+.badge-insure{
+    width: 70px;
+    background-color: #c63b43 !important;
+}
+
+.badge-ensure{
+    width: 70px;
+    background-color: #61c055 !important;
+}
+
+.badge-destroy{
+    width: 70px;
+    background-color: #e4bc45 !important;
+}
+
+.badge-delete{
+    background-color: #3b3b3b !important;
+    padding: 6px !important;
+    padding-top: 4px !important;
+}
+
+.badge-delete:hover{
+    background-color: #c63b43 !important;
+}
+
+.badge-gi > span {
+    font-size: 10px;
+    height: 12px;
+}
