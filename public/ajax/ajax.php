@@ -8,6 +8,7 @@
 
 require_once '../../private/classes/Auth.class.php';
 require_once '../../private/classes/Player.class.php';
+require_once '../../private/classes/Vehicles.class.php';
 
 // Security
 if ((Auth::isModo() == false && Auth::isAdmin() == false)){
@@ -20,5 +21,9 @@ switch($_GET['op']) {
     case 'update_civ_licenses':
         $p = new Player();
         $p->updateLicenses($_POST['status'], $_POST['pid'], $_POST['id']);
+        break;
+    case 'delete_vehicle':
+        $v = new Vehicles();
+        $v->deleteVehicle($_POST['id']);
         break;
 }

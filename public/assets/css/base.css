@@ -99,14 +99,26 @@ button .btn {
     background-color: #c63b43 !important;
 }
 
+.badge-insure:hover{
+    background-color: #3b3b3b !important;
+}
+
 .badge-ensure{
     width: 70px;
     background-color: #61c055 !important;
 }
 
+.badge-ensure:hover{
+    background-color: #3b3b3b !important;
+}
+
 .badge-destroy{
     width: 70px;
     background-color: #e4bc45 !important;
+}
+
+.badge-destroy:hover{
+    background-color: #3b3b3b !important;
 }
 
 .badge-delete{

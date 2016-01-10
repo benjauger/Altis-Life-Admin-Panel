@@ -102,9 +102,9 @@
                 </li>
             {% else %}
                 {% for veh in p_vehicles %}
-                <li class="list-group-item">
+                <li id="vehicle_{{ veh.id }}" class="list-group-item">
                     <a href="https://community.bistudio.com/wiki/File:Arma3_CfgVehicles_{{ veh.classname }}.jpg" target="_blank">{{ veh.classname }}</a>
-                    <span onclick="alert('id - {{ veh.id }}')" class="badge badge-nr badge-pp badge-delete pointer" data-toggle="tooltip" data-placement="top" title="Delete vehicule #{{ veh.id }}"><span class="glyphicon glyphicon-trash"></span></span>
+                    <span onclick="deleteVehicle('{{ veh.id }}')" class="badge badge-nr badge-pp badge-delete pointer" data-toggle="tooltip" data-placement="top" title="Delete vehicule #{{ veh.id }}"><span class="glyphicon glyphicon-trash"></span></span>
                     <span onclick="alert('id - {{ veh.id }}')" class="badge badge-nr badge-pp badge-destroy pointer">Destroy</span>
                     {% if veh.assur == 1 %}
                     <span onclick="alert('id - {{ veh.id }}')" class="badge badge-nr badge-pp badge-insure pointer">Insure</span>
