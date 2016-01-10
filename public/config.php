@@ -8,7 +8,7 @@
 class Init
 {
     /* DATABASE */
-    const _DB_DSN = '127.0.0.1';                   			// Address of database, Can be 'localhost'
+    const _DB_DSN = '127.0.0.1';                   		// Address of database, Can be 'localhost'
     const _DB_NME = 'arma3life';                        // The name of your table
     const _DB_USR = 'user';                         		// Database user
     const _DB_PWD = 'password';                         // Password of database user
